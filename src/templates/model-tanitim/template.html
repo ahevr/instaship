@@ -1,0 +1,31 @@
+<div class="mt-glow"></div>
+
+<header class="mt-head" data-move>
+  <div class="mt-tag" data-field="tag"></div>
+  <h1 class="mt-title" data-field="title"></h1>
+  <p class="mt-sub" data-field="summary"></p>
+</header>
+
+<div class="mt-frame">
+  <div class="photo mt-photo"><img data-field="photo" alt="" /></div>
+  <i class="mt-corner tl"></i>
+  <i class="mt-corner br"></i>
+</div>
+
+<!-- Formdaki her özellik satırı için <template> içindeki kutu bir kez kopyalanır -->
+<div class="mt-specs" data-list="specs">
+  <template>
+    <div class="mt-spec">
+      <span data-item="label"></span>
+      <strong data-item="value"></strong>
+    </div>
+  </template>
+</div>
+
+<footer class="mt-footer">
+  <div class="mt-brand">
+    <img class="mt-logo" data-field="logo" alt="" />
+    <span data-field="handle"></span>
+  </div>
+  <span data-field="date"></span>
+</footer>

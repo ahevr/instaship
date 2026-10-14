@@ -1,0 +1,147 @@
+/* ŞABLON: Son Dakika — tam ekran fotoğraf, alttan koyulaşan gölge, büyük başlık */
+
+.tpl-son-dakika .sd-photo {
+  position: absolute;
+  inset: 0;
+}
+
+/* Fotoğrafın üstündeki gölge. Koyuluğu "Karartma" ayarı belirler. */
+.tpl-son-dakika .sd-shade {
+  position: absolute;
+  inset: 0;
+  opacity: var(--overlay);
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.55) 0%,
+    rgb(0 0 0 / 0) 20%,
+    rgb(0 0 0 / 0) 34%,
+    color-mix(in srgb, var(--bg) 80%, transparent) 62%,
+    var(--bg) 92%
+  );
+}
+
+.tpl-son-dakika .sd-top {
+  position: absolute;
+  top: 56px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 14px rgb(0 0 0 / 0.45);
+}
+.tpl-son-dakika .sd-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.tpl-son-dakika .sd-logo {
+  height: 68px;
+  width: auto;
+}
+.tpl-son-dakika .sd-date {
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.tpl-son-dakika .sd-content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  bottom: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Eğik kırmızı etiket */
+.tpl-son-dakika .sd-tag {
+  align-self: flex-start;
+  padding: 10px 30px;
+  background: var(--accent);
+  transform: skewX(-12deg);
+}
+.tpl-son-dakika .sd-tag span {
+  display: block;
+  transform: skewX(12deg);
+  color: var(--on-accent);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tpl-son-dakika .sd-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(104px * var(--title-scale));
+  line-height: 1.02;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+
+.tpl-son-dakika .sd-summary {
+  max-width: 920px;
+  font-size: 34px;
+  line-height: 1.4;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.tpl-son-dakika .sd-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 2px solid color-mix(in srgb, var(--text) 22%, transparent);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.tpl-son-dakika .sd-cta {
+  margin-left: auto;
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Alttaki yarış şeridi */
+.tpl-son-dakika .sd-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 18px;
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 26px, transparent 26px 40px);
+}
+
+/* Kare boyutta daha sıkışık */
+.tpl-son-dakika.size-square .sd-title {
+  font-size: calc(88px * var(--title-scale));
+}
+.tpl-son-dakika.size-square .sd-summary {
+  -webkit-line-clamp: 2;
+  font-size: 30px;
+}
+.tpl-son-dakika.size-square .sd-content {
+  gap: 22px;
+  bottom: 72px;
+}
+
+/* Story: üst ve alttaki Instagram arayüzü için boşluk */
+.tpl-son-dakika.size-story .sd-top {
+  top: 200px;
+}
+.tpl-son-dakika.size-story .sd-content {
+  bottom: 260px;
+}

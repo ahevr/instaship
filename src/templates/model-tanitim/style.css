@@ -1,0 +1,184 @@
+/* ŞABLON: Model Tanıtım — başlık, çerçeveli fotoğraf, 3 teknik özellik */
+
+.tpl-model-tanitim {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 64px;
+}
+
+/* Sağ üstteki renk parlaması ("Karartma / efekt" ayarı) */
+.tpl-model-tanitim .mt-glow {
+  position: absolute;
+  inset: 0;
+  opacity: var(--overlay);
+  background: radial-gradient(
+    circle at 88% 6%,
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    transparent 55%
+  );
+}
+.tpl-model-tanitim > *:not(.mt-glow) {
+  position: relative;
+}
+
+.tpl-model-tanitim .mt-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tpl-model-tanitim .mt-tag {
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.tpl-model-tanitim .mt-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(100px * var(--title-scale));
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+.tpl-model-tanitim .mt-sub {
+  font-size: 30px;
+  line-height: 1.4;
+  opacity: 0.75;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.tpl-model-tanitim .mt-frame {
+  flex: 1;
+  min-height: 0;
+  margin: 0 6px;
+}
+.tpl-model-tanitim .mt-photo {
+  position: absolute;
+  inset: 0;
+}
+.tpl-model-tanitim .mt-corner {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  border: 0 solid var(--accent);
+}
+.tpl-model-tanitim .mt-corner.tl {
+  top: -14px;
+  left: -14px;
+  border-top-width: 10px;
+  border-left-width: 10px;
+}
+.tpl-model-tanitim .mt-corner.br {
+  right: -14px;
+  bottom: -14px;
+  border-bottom-width: 10px;
+  border-right-width: 10px;
+}
+
+/* Özellik kutuları: sayıya göre sütun sayısı değişir.
+   1-4 özellik → tek satır, 5-6 → 3 sütun, 7-8 → 4 sütun, 9 → 3 sütun */
+.tpl-model-tanitim .mt-specs {
+  --cols: var(--count);
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 18px;
+}
+.tpl-model-tanitim .mt-specs[data-count='5'],
+.tpl-model-tanitim .mt-specs[data-count='6'],
+.tpl-model-tanitim .mt-specs[data-count='9'] {
+  --cols: 3;
+}
+.tpl-model-tanitim .mt-specs[data-count='7'],
+.tpl-model-tanitim .mt-specs[data-count='8'] {
+  --cols: 4;
+}
+.tpl-model-tanitim .mt-spec {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 26px;
+  border-left: 8px solid var(--accent);
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+}
+.tpl-model-tanitim .mt-spec span {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+.tpl-model-tanitim .mt-spec strong {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.05;
+}
+
+.tpl-model-tanitim .mt-specs:is([data-count='4'], [data-count='7'], [data-count='8']) .mt-spec {
+  padding: 16px 20px;
+}
+.tpl-model-tanitim .mt-specs:is([data-count='4'], [data-count='7'], [data-count='8']) .mt-spec strong {
+  font-size: 42px;
+}
+.tpl-model-tanitim .mt-specs:is([data-count='5'], [data-count='6'], [data-count='9']) {
+  gap: 14px;
+}
+.tpl-model-tanitim .mt-specs:is([data-count='5'], [data-count='6'], [data-count='9']) .mt-spec {
+  padding: 14px 22px;
+}
+.tpl-model-tanitim .mt-specs:is([data-count='5'], [data-count='6'], [data-count='9']) .mt-spec strong {
+  font-size: 44px;
+}
+
+.tpl-model-tanitim .mt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.tpl-model-tanitim .mt-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tpl-model-tanitim .mt-logo {
+  height: 52px;
+  width: auto;
+}
+
+.tpl-model-tanitim.size-square {
+  gap: 26px;
+  padding: 52px 56px;
+}
+.tpl-model-tanitim.size-square .mt-title {
+  font-size: calc(78px * var(--title-scale));
+}
+.tpl-model-tanitim.size-square .mt-sub {
+  display: none;
+}
+.tpl-model-tanitim.size-square .mt-specs .mt-spec {
+  padding: 12px 18px;
+}
+.tpl-model-tanitim.size-square .mt-specs .mt-spec strong {
+  font-size: 38px;
+}
+.tpl-model-tanitim.size-square .mt-specs .mt-spec span {
+  font-size: 19px;
+}
+
+.tpl-model-tanitim.size-story {
+  padding: 200px 64px 240px;
+}

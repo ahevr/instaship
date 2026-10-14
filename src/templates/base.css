@@ -1,0 +1,55 @@
+/* Tüm şablonlarda ortak kurallar.
+   Kullanılabilir CSS değişkenleri (sağ panelden gelir):
+   --accent, --on-accent (vurgu üstündeki yazı rengi, otomatik), --bg, --text,
+   --font-head, --font-body, --title-scale, --overlay,
+   --photo-x, --photo-y, --photo-zoom */
+
+.post {
+  position: relative;
+  overflow: hidden;
+  flex: none;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.post *,
+.post *::before,
+.post *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Fotoğraf kutusu: <div class="photo"><img data-field="photo"></div> */
+.post .photo {
+  position: relative;
+  overflow: hidden;
+  background: #222;
+}
+.post .photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--photo-x) var(--photo-y);
+  transform: scale(var(--photo-zoom));
+  transform-origin: var(--photo-x) var(--photo-y);
+}
+
+/* Taşınabilir yazı bloğu: data-move olan eleman "Yazı konumu" ayarıyla
+   ya da önizlemede sürüklenerek kaydırılır */
+.post [data-move] {
+  transform: translate(var(--text-x, 0px), var(--text-y, 0px));
+}
+
+/* Başlıkta *yıldız* ile işaretlenen kelimeler */
+.post .hl {
+  color: var(--accent);
+}
+
+/* Boş bırakılan alanlar gizlenir */
+.post [data-empty] {
+  display: none !important;
+}

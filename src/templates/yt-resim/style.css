@@ -1,0 +1,108 @@
+/* ŞABLON: YouTube · Resim + yazı — tam ekran fotoğraf, solda koyulaşan gölge, gölgeli dev başlık */
+
+.tpl-yt-resim .yr-photo {
+  position: absolute;
+  inset: 0;
+}
+
+/* Yazının okunması için soldan koyulaşan gölge ("Karartma" ayarı) */
+.tpl-yt-resim .yr-shade {
+  position: absolute;
+  inset: 0;
+  opacity: var(--overlay);
+  background: linear-gradient(
+    to right,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 75%, transparent) 38%,
+    rgb(0 0 0 / 0) 70%
+  );
+}
+
+.tpl-yt-resim .yr-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 70px;
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 26px;
+}
+
+.tpl-yt-resim .yr-badge {
+  padding: 8px 26px;
+  background: var(--accent);
+  transform: skewX(-12deg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.4);
+}
+.tpl-yt-resim .yr-badge span {
+  display: block;
+  transform: skewX(12deg);
+  color: var(--on-accent);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tpl-yt-resim .yr-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(120px * var(--title-scale));
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: pre-line;
+  /* Fotoğrafın üstünde de okunsun diye kalın gölge */
+  text-shadow:
+    0 6px 0 rgb(0 0 0 / 0.55),
+    0 10px 40px rgb(0 0 0 / 0.6);
+}
+
+.tpl-yt-resim .yr-logo {
+  position: absolute;
+  right: 40px;
+  top: 34px;
+  height: 84px;
+  width: auto;
+  filter: drop-shadow(0 4px 14px rgb(0 0 0 / 0.5));
+}
+
+/* Alttaki ince renk şeridi */
+.tpl-yt-resim .yr-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14px;
+  background: var(--accent);
+}
+
+/* Shorts (dikey): gölge alttan gelir, yazı alt kısımda ama Shorts butonlarının üstünde */
+.tpl-yt-resim.size-shorts .yr-shade {
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    color-mix(in srgb, var(--bg) 80%, transparent) 38%,
+    rgb(0 0 0 / 0) 62%
+  );
+}
+.tpl-yt-resim.size-shorts .yr-content {
+  top: auto;
+  bottom: 440px;
+  left: 64px;
+  right: 64px;
+  width: auto;
+}
+.tpl-yt-resim.size-shorts .yr-title {
+  font-size: calc(140px * var(--title-scale));
+}
+.tpl-yt-resim.size-shorts .yr-badge span {
+  font-size: 48px;
+}
+.tpl-yt-resim.size-shorts .yr-logo {
+  top: 120px;
+  right: 56px;
+}

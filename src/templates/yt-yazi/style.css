@@ -1,0 +1,104 @@
+/* ŞABLON: YouTube · Sadece yazı — düz arka plan, dev başlık, vurgulu kelimeler renkli kutuda */
+
+/* Arka plandaki renk parlaması ve çizgiler ("Karartma / efekt" ayarı) */
+.tpl-yt-yazi .yy-bg {
+  position: absolute;
+  inset: 0;
+  opacity: var(--overlay);
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--accent) 50%, transparent), transparent 55%),
+    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--text) 5%, transparent) 0 2px, transparent 2px 28px);
+}
+
+/* Sağ kenardaki eğik renk şeridi */
+.tpl-yt-yazi .yy-stripe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -60px;
+  width: 200px;
+  background: var(--accent);
+  transform: skewX(-14deg);
+}
+
+.tpl-yt-yazi .yy-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 80px;
+  right: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.tpl-yt-yazi .yy-badge {
+  padding: 10px 30px;
+  background: var(--accent);
+  transform: skewX(-12deg);
+}
+.tpl-yt-yazi .yy-badge span {
+  display: block;
+  transform: skewX(12deg);
+  color: var(--on-accent);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tpl-yt-yazi .yy-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(124px * var(--title-scale));
+  line-height: 1.24;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+/* Vurgulu kelimeler renkli kutunun içinde */
+.tpl-yt-yazi .yy-title .hl {
+  padding: 0 0.12em;
+  background: var(--accent);
+  color: var(--on-accent);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.tpl-yt-yazi .yy-logo {
+  position: absolute;
+  right: 44px;
+  bottom: 36px;
+  height: 90px;
+  width: auto;
+}
+
+/* Shorts (dikey): şerit alta geçer, yazı Shorts arayüzünün dışında kalacak şekilde ortalanır */
+.tpl-yt-yazi.size-shorts .yy-stripe {
+  top: auto;
+  right: -40px;
+  left: -40px;
+  bottom: -80px;
+  width: auto;
+  height: 260px;
+  transform: skewY(-8deg);
+}
+.tpl-yt-yazi.size-shorts .yy-content {
+  top: 220px;
+  bottom: 480px;
+  left: 72px;
+  right: 72px;
+}
+.tpl-yt-yazi.size-shorts .yy-title {
+  font-size: calc(150px * var(--title-scale));
+}
+.tpl-yt-yazi.size-shorts .yy-badge span {
+  font-size: 52px;
+}
+.tpl-yt-yazi.size-shorts .yy-logo {
+  top: 120px;
+  bottom: auto;
+  right: 64px;
+}

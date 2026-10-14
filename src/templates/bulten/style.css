@@ -1,0 +1,146 @@
+/* ŞABLON: Bülten — üstte eğik kesimli fotoğraf, altta haber metni */
+
+.tpl-bulten {
+  --photo-h: 56%; /* fotoğrafın yüksekliği */
+  --cut: 88%; /* eğik kesimin sağ taraftaki yüksekliği */
+}
+
+/* Fotoğrafın altındaki renkli kenar */
+.tpl-bulten .bt-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--photo-h) + 14px);
+  background: var(--accent);
+  clip-path: polygon(0 0, 100% 0, 100% var(--cut), 0 100%);
+}
+
+.tpl-bulten .bt-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--photo-h);
+  clip-path: polygon(0 0, 100% 0, 100% var(--cut), 0 100%);
+}
+/* Fotoğrafın alt kısmını hafif koyulaştırır ("Karartma" ayarı) */
+.tpl-bulten .bt-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0) 50%, rgb(0 0 0 / 0.7));
+  opacity: var(--overlay);
+}
+
+.tpl-bulten .bt-panel {
+  position: absolute;
+  top: calc(var(--photo-h) + 34px);
+  left: 72px;
+  right: 72px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tpl-bulten .bt-tag {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.tpl-bulten .bt-tag span {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.tpl-bulten .bt-tag span::before {
+  content: '';
+  width: 52px;
+  height: 6px;
+  background: var(--accent);
+}
+.tpl-bulten .bt-tag em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+.tpl-bulten .bt-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(84px * var(--title-scale));
+  line-height: 1.04;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+
+.tpl-bulten .bt-summary {
+  font-size: 31px;
+  line-height: 1.45;
+  opacity: 0.78;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.tpl-bulten .bt-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.tpl-bulten .bt-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0.8;
+}
+.tpl-bulten .bt-logo {
+  height: 56px;
+  width: auto;
+}
+.tpl-bulten .bt-cta {
+  margin-left: auto;
+  padding: 12px 22px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.tpl-bulten.size-square {
+  --photo-h: 50%;
+}
+.tpl-bulten.size-square .bt-title {
+  font-size: calc(70px * var(--title-scale));
+}
+.tpl-bulten.size-square .bt-summary {
+  -webkit-line-clamp: 2;
+  font-size: 28px;
+}
+.tpl-bulten.size-square .bt-panel {
+  gap: 18px;
+  bottom: 48px;
+}
+
+.tpl-bulten.size-story {
+  --photo-h: 54%;
+}
+.tpl-bulten.size-story .bt-panel {
+  bottom: 240px;
+}
+.tpl-bulten.size-story .bt-summary {
+  -webkit-line-clamp: 5;
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InstaShip · Moto Haber</title>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="panel left">
+        <div class="brand" lang="en">InstaShip <small>moto haber postları</small></div>
+        <div class="tabs" id="groupTabs"></div>
+
+        <section id="photoSection">
+          <h2>1 · Fotoğraf</h2>
+          <label class="drop" id="drop">
+            <input type="file" id="photoInput" accept="image/*" hidden />
+            <span>Fotoğrafı buraya sürükle, tıkla<br />ya da yapıştır (Ctrl/⌘+V)</span>
+          </label>
+          <div class="photo-controls" id="photoControls">
+            <label class="range"><span>Yatay</span><input type="range" id="photoX" min="0" max="100" step="1" /></label>
+            <label class="range"><span>Dikey</span><input type="range" id="photoY" min="0" max="100" step="1" /></label>
+            <label class="range"><span>Yakınlaştır</span><input type="range" id="photoZoom" min="1" max="2.5" step="0.01" /></label>
+          </div>
+        </section>
+
+        <section>
+          <h2>2 · Şablon</h2>
+          <div class="tpl-list" id="templateList"></div>
+          <label class="field">
+            <span>Boyut</span>
+            <select id="sizeSelect"></select>
+          </label>
+        </section>
+
+        <section>
+          <h2 id="fieldsTitle">3 · Haber</h2>
+          <div class="field-grid" id="fieldForm"></div>
+        </section>
+      </aside>
+
+      <main class="stage" id="stage">
+        <div class="stage-inner" id="stageInner"><div id="post" class="post"></div></div>
+      </main>
+
+      <aside class="panel right">
+        <section>
+          <h2>Tasarım <small id="styleFor"></small></h2>
+          <div id="styleForm"></div>
+          <button class="ghost" id="resetStyle">Bu şablonu varsayılana döndür</button>
+        </section>
+
+        <section id="textPosSection">
+          <h2>Yazı konumu</h2>
+          <label class="range"><span>Yatay</span><input type="range" id="textX" step="1" /></label>
+          <label class="range"><span>Dikey</span><input type="range" id="textY" step="1" /></label>
+          <button class="ghost" id="resetTextPos">Varsayılan konuma döndür</button>
+          <small class="hint">Önizlemede yazıyı fareyle sürükleyerek de taşıyabilirsin.</small>
+        </section>
+
+        <section>
+          <h2>Logo</h2>
+          <div class="logo-row">
+            <label class="btn ghost">
+              <input type="file" id="logoInput" accept="image/*" hidden />Logo yükle
+            </label>
+            <button class="ghost" id="removeLogo">Kaldır</button>
+          </div>
+          <small class="hint">Şeffaf arka planlı PNG en iyi sonucu verir.</small>
+        </section>
+
+        <section class="actions">
+          <button class="primary" id="downloadBtn">PNG indir</button>
+          <button class="ghost" id="downloadAll">Tüm şablonları indir</button>
+        </section>
+      </aside>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
